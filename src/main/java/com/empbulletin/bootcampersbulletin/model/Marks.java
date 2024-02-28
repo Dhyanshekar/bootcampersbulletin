@@ -1,179 +1,191 @@
 package com.empbulletin.bootcampersbulletin.model;
 
-
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "Marks")
-
 public class Marks {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer marks_id;
-   @ManyToOne
-   @JoinColumn(name = "emp_id", referencedColumnName = "emp_id")
-   private Employee employee;
-   @Column(name = "unix")
-   private Float unix;
-   @Column(name = "sequel")
-   private Float  sequel;
-   @Column(name = "java")
-   private Float  java;
-   @Column(name = "testing")
-   private Float testing;
-   @Column(name = "python")
-   private Float python;
-   @Column(name = "aiml")
-   private Float aiml;
-   @Column(name = "azure")
-   private Float azure;
-   @Column(name = "git")
-   private Float git;
-   @Column(name = "jenkins")
-   private Float jenkins;
-   @Column(name = "devops")
-   private Float devops;
+    private Long marks_id;
+
+    @ManyToOne
+    @JoinColumn(name = "emp_id", referencedColumnName = "emp_id")
+    private Employee employee;
 
 
 
-   @Override
-   public String toString() {
-    return "Marks{" +
-          "marks_id=" + marks_id +
-          ", employee=" + employee +
-          ", unix=" + unix +
-          ", sequel=" + sequel +
-          ", java=" + java +
-          ", testing=" + testing +
-          ", python=" + python +
-          ", aiml=" + aiml +
-          ", azure=" + azure +
-          ", git=" + git +
-          ", jenkins=" + jenkins +
-          ", devops=" + devops +
-          ", devops=" + devops +
-          '}';
-   }
+    @ElementCollection
+    @CollectionTable(name = "subject_marks", joinColumns = @JoinColumn(name = "marks_id"))
+    @MapKeyColumn(name = "subject_name")
+    @Column(name = "marks")
+    private Map<String, Float> subjectMarks = new HashMap<>();
 
-   public Marks() {
-   }
 
-   public Marks(Integer marks_id, Employee employee, Float unix, Float sequel, Float java, Float testing, Float python, Float aiml, Float azure, Float git, Float jenkins, Float devops)
-   {
-    this.marks_id = marks_id;
-    this.employee = employee;
-    this.unix = unix;
-    this.sequel = sequel;
-    this.java = java;
-    this.testing = testing;
-    this.python = python;
-    this.aiml = aiml;
-    this.azure = azure;
-    this.git = git;
-    this.jenkins = jenkins;
-    this.devops = devops;
-   }
+    @Column(name = "unix")
+    private Float unix;
+    @Column(name = "sequel")
+    private Float  sequel;
+    @Column(name = "java")
+    private Float  java;
+    @Column(name = "testing")
+    private Float testing;
+    @Column(name = "python")
+    private Float python;
+    @Column(name = "aiml")
+    private Float aiml;
+    @Column(name = "azure")
+    private Float azure;
+    @Column(name = "git")
+    private Float git;
+    @Column(name = "jenkins")
+    private Float jenkins;
+    @Column(name = "devops")
+    private Float devops;
 
 
 
-   public Integer getMarks_id()
-   {
-     return marks_id;
- }
+    @Override
+    public String toString() {
+        return "Marks{" +
+                "marks_id=" + marks_id +
+                ", employee=" + employee +
+                ", unix=" + unix +
+                ", sequel=" + sequel +
+                ", java=" + java +
+                ", testing=" + testing +
+                ", python=" + python +
+                ", aiml=" + aiml +
+                ", azure=" + azure +
+                ", git=" + git +
+                ", jenkins=" + jenkins +
+                ", devops=" + devops +
+                ", devops=" + devops +
+                '}';
+    }
 
- public void setMarks_id(Integer marks_id) {
-  this.marks_id = marks_id;
- }
+    public Marks() {
+    }
 
- public Employee getEmployee() {
-  return employee;
- }
+    public Marks(Long marks_id, Employee employee, Float unix, Float sequel, Float java, Float testing, Float python, Float aiml, Float azure, Float git, Float jenkins, Float devops)
+    {
+        this.marks_id = marks_id;
+        this.employee = employee;
+        this.unix = unix;
+        this.sequel = sequel;
+        this.java = java;
+        this.testing = testing;
+        this.python = python;
+        this.aiml = aiml;
+        this.azure = azure;
+        this.git = git;
+        this.jenkins = jenkins;
+        this.devops = devops;
+    }
 
- public void setEmployee(Employee employee) {
-  this.employee = employee;
- }
+    public Long getMarks_id()
+    {
+        return marks_id;
+    }
 
- public Float getUnix() {
-  return unix;
- }
+    public void setMarks_id(Long marks_id) {
+        this.marks_id = marks_id;
+    }
 
- public void setUnix(Float unix) {
-  this.unix = unix;
- }
+    public Employee getEmployee() {
+        return employee;
+    }
 
- public Float getSequel() {
-  return sequel;
- }
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
- public void setSequel(Float sequel) {
-  this.sequel = sequel;
- }
+    public Float getUnix() {
+        return unix;
+    }
 
- public Float getJava() {
-  return java;
- }
+    public void setUnix(Float unix) {
+        this.unix = unix;
+    }
 
- public void setJava(Float java) {
-  this.java = java;
- }
+    public Float getSequel() {
+        return sequel;
+    }
 
- public Float getTesting() {
-  return testing;
- }
+    public void setSequel(Float sequel) {
+        this.sequel = sequel;
+    }
 
- public void setTesting(Float testing) {
-  this.testing = testing;
- }
+    public Float getJava() {
+        return java;
+    }
 
- public Float getPython() {
-  return python;
- }
+    public void setJava(Float java) {
+        this.java = java;
+    }
 
- public void setPython(Float python) {
-  this.python = python;
- }
+    public Float getTesting() {
+        return testing;
+    }
 
- public Float getAiml() {
-  return aiml;
- }
+    public void setTesting(Float testing) {
+        this.testing = testing;
+    }
 
- public void setAiml(Float aiml) {
-  this.aiml = aiml;
- }
+    public Float getPython() {
+        return python;
+    }
 
- public Float getAzure() {
-  return azure;
- }
+    public void setPython(Float python) {
+        this.python = python;
+    }
 
- public void setAzure(Float azure) {
-  this.azure = azure;
- }
+    public Float getAiml() {
+        return aiml;
+    }
 
- public Float getGit() {
-  return git;
- }
+    public void setAiml(Float aiml) {
+        this.aiml = aiml;
+    }
 
- public void setGit(Float git) {
-  this.git = git;
- }
+    public Float getAzure() {
+        return azure;
+    }
 
- public Float getJenkins() {
-  return jenkins;
- }
+    public void setAzure(Float azure) {
+        this.azure = azure;
+    }
 
- public void setJenkins(Float jenkins) {
-  this.jenkins = jenkins;
- }
+    public Float getGit() {
+        return git;
+    }
 
- public Float getDevops() {
-  return devops;
- }
+    public void setGit(Float git) {
+        this.git = git;
+    }
 
- public void setDevops(Float devops) {
-  this.devops = devops;
- }
+    public Float getJenkins() {
+        return jenkins;
+    }
 
+    public void setJenkins(Float jenkins) {
+        this.jenkins = jenkins;
+    }
+
+    public Float getDevops() {
+        return devops;
+    }
+
+    public void setDevops(Float devops) {
+        this.devops = devops;
+    }
 
 }
