@@ -12,7 +12,7 @@ import com.empbulletin.bootcampersbulletin.model.Employee;
 import com.empbulletin.bootcampersbulletin.repository.EmployeeRepository;
 
 @RestController
-@RequestMapping("/api/v1/employees")
+@RequestMapping("/home/employees")
 
 public class EmployeeController {
 

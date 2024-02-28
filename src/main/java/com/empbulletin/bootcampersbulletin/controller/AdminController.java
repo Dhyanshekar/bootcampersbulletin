@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/admin/employees")
 public class AdminController {
 
     @Autowired
@@ -88,7 +88,6 @@ public class AdminController {
 //
 //        return employeeRepository.save(employee);
 //    }
-
 
 
     @PutMapping("/{id}")
